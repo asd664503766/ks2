@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.dao.UserMapper">
+    <select id="getAll" resultType="cn.entity.User">
+        SELECT * FROM `test_user`
+    </select>
+    <select id="getUserName" resultType="cn.entity.User">
+         SELECT * FROM `test_user` where username like concat('%',#{username},'%')
+         <if test="enabled!=null">
+             and enabled=#{enabled}
+         </if>
+    </select>
+    <select id="getUser" resultType="cn.entity.User">
+        SELECT * FROM `test_user` where username=#{username}
+    </select>
+    <select id="getRole" resultType="cn.entity.Role">
+        SELECT * FROM `test_role` r,`test_user_role` ur WHERE r.rid=ur.rid AND ur.id=#{id}
+    </select>
+    <delete id="delete">
+        delete from `test_user` wehre uid=#{uid}
+    </delete>
+</mapper>

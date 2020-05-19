@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/user/sel">
+    <table border="1">
+        <tr>
+            <td colspan="9">
+                用户名：<input type="text">
+                状态：<input type="text">
+                <input type="submit" value="查询">
+            </td>
+        </tr>
+        <tr>
+            <td>id</td>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>性别</td>
+            <td>年龄</td>
+            <td>邮箱</td>
+            <td>是否锁定</td>
+            <td>状态</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="u:${user}" th:id="${u.uid}">
+            <td th:text="${u.uid}"></td>
+            <td th:text="${u.username}"></td>
+            <td th:text="${u.password}"></td>
+            <td th:text="${u.sex}"></td>
+            <td th:text="${u.age}"></td>
+            <td th:text="${u.email}"></td>
+            <td th:text="${u.enabled}"></td>
+            <td th:text="${u.locked}"></td>
+            <td></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
